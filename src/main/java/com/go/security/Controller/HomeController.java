@@ -1,19 +1,25 @@
 package com.go.security.Controller;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HomeController {
 
-	@GetMapping({"/home","/"})
+	@GetMapping({ "/home", "/" })
 	public String getHomePage() {
 		return "homePage";
 	}
 
 	@GetMapping("/welcome")
-	public String getWelcomePage() {
-		return "welcomePage";
+	public ModelAndView getWelcomePage(Authentication authentication) {
+		String userName = authentication.getName();
+		System.out.println("*-**-*-* " + userName);
+		ModelAndView model = new ModelAndView("welcomePage");
+		model.addObject("rol", userName);
+		return model;
 	}
 
 	@GetMapping("/admin")
