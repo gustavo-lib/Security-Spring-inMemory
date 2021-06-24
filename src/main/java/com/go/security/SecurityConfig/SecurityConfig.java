@@ -15,9 +15,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
 		// {noop} => No operation for password encoder (no password encoding needed)
-		auth.inMemoryAuthentication().withUser("devs").password("{noop}devs").authorities("ADMIN");
-		auth.inMemoryAuthentication().withUser("ns").password("{noop}ns").authorities("EMPLOYEE");
-		auth.inMemoryAuthentication().withUser("vs").password("{noop}vs").authorities("MANAGER");
+		auth.inMemoryAuthentication().withUser("adm").password("{noop}adm").authorities("ADMIN");
+		auth.inMemoryAuthentication().withUser("emp").password("{noop}emp").authorities("EMPLOYEE");
+		auth.inMemoryAuthentication().withUser("man").password("{noop}man").authorities("MANAGER");
 	}
 
 	@Override
