@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security5">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -9,7 +9,6 @@
 	<a th:href="@{/logout}">LOGOUT</a> <br>
 	
 	<a th:href="@{/home}">Home</a> <br>
-	<a th:href="@{/welcome}">Welcome</a><br>
 	<a th:href="@{/emp}">Employee</a><br>
 	<a th:href="@{/admin}">Admi</a><br>
 	<a th:href="@{/mgr}">Manager</a><br>
