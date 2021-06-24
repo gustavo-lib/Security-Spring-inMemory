@@ -2,16 +2,25 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security5">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<style>
+h1 {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+</style>
+<title>Spring Security - Gustavo Ortiz </title>
 </head>
-<body>
-	<h3>Bienvenido a esta pagina , luego de su Login exitoso</h3>
-	<a th:href="@{/logout}">LOGOUT</a> <br>
+<body >
+
+	<h1 class="">Welcome !!! </h1>
 	
-	<a th:href="@{/home}">Home</a> <br>
-	<a th:href="@{/emp}">Employee</a><br>
-	<a th:href="@{/admin}">Admi</a><br>
-	<a th:href="@{/mgr}">Manager</a><br>
-	<a th:href="@{/common}">Common</a><br>
+	<h2 th:text="${rol}"></h2><br>
+	<a th:href="@{/logout}">LOGOUT</a> <br>
+	<a sec:authorize="hasAuthority('EMPLOYEE')" th:href="@{/emp}">Employee</a><br>
+	<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/admin}">Admi</a><br>
+	<a sec:authorize="hasAuthority('MANAGER')" th:href="@{/mgr}">Manager</a><br>
+	<a sec:authorize="hasAnyAuthority('EMPLOYEE', 'MANAGER')" th:href="@{/common}">Common</a><br>
 </body>
 </html>
