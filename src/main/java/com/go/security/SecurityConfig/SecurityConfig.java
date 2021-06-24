@@ -27,22 +27,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().
 		antMatchers("/home").permitAll().
 		antMatchers("/welcome").authenticated().
-		antMatchers("/admin").
-		hasAuthority("ADMIN").antMatchers("/emp").hasAuthority("EMPLOYEE")
-				.antMatchers("/mgr").hasAuthority("MANAGER").antMatchers("/common")
-				.hasAnyAuthority("EMPLOYEE", "MANAGER")
-
-				// Any other URLs which are not configured in above antMatchers
-				// generally declared aunthenticated() in real time
-				.anyRequest().authenticated()
-
-				// Login Form Details
-				.and().formLogin().defaultSuccessUrl("/welcome", true)
-
-				// Logout Form Details
-				.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-
-				// Exception Details
-				.and().exceptionHandling().accessDeniedPage("/accessDenied");
+		antMatchers("/admin").hasAuthority("ADMIN").
+		antMatchers("/emp").hasAuthority("EMPLOYEE").
+	    antMatchers("/mgr").hasAuthority("MANAGER").
+	    antMatchers("/common").hasAnyAuthority("EMPLOYEE", "MANAGER")
+		// Any other URLs which are not configured in above antMatchers
+		// generally declared aunthenticated() in real time
+		.anyRequest().authenticated()
+		// Login Form Details
+		.and().formLogin().defaultSuccessUrl("/welcome", true)
+		// Logout Form Details
+		.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+		// Exception Details
+		.and().exceptionHandling().accessDeniedPage("/accessDenied");
 	}
 }
