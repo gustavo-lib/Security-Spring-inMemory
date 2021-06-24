@@ -11,5 +11,5 @@ Spring Security - Authentication and Authorization in memory
 ## Dependencias del proyecto SpringBoot
 - Spring Security
 - Spring Web
-- Tymeleaf
+- Thymeleaf
 - Spring Boot DevTools
